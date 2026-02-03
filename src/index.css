@@ -1,0 +1,104 @@
+:root {
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  --color-primary: #4F46E5;
+  --color-bg: #F9FAFB;
+  --color-text: #1F2937;
+  --color-card: #FFFFFF;
+  
+  --deadline-red: #EF4444;    /* Passed */
+  --deadline-orange: #F97316; /* < 3 days */
+  --deadline-yellow: #EAB308; /* < 7 days */
+  --deadline-safe: #10B981;   /* Safe */
+
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+#root {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.card {
+  background: var(--color-card);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  margin-bottom: 1rem;
+}
+
+.btn {
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  padding: 0.6em 1.2em;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: transform 0.1s, background-color 0.2s;
+}
+.btn:hover { background-color: #4338ca; }
+.btn:active { transform: scale(0.98); }
+
+.input {
+  width: 100%;
+  padding: 0.6em;
+  border: 1px solid #D1D5DB;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+}
+
+.task-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  margin: 0.5rem 0;
+  background: white;
+  border-radius: 8px;
+  border-left: 6px solid transparent;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  transition: all 0.2s;
+}
+
+.task-deadline-passed { border-left-color: var(--deadline-red); }
+.task-deadline-urgent { border-left-color: var(--deadline-orange); }
+.task-deadline-warning { border-left-color: var(--deadline-yellow); }
+.task-deadline-safe { border-left-color: var(--deadline-safe); }
+
+.offline-badge {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  z-index: 100;
+}
+.status-online { background-color: #D1FAE5; color: #065F46; }
+.status-offline { background-color: #FEE2E2; color: #991B1B; }
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #111827;
+    --color-text: #F9FAFB;
+    --color-card: #1F2937;
+  }
+  .task-item { background: #374151; }
+  .input { background: #374151; color: white; border-color: #4B5563; }
+}
